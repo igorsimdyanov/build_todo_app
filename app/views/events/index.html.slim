@@ -1,4 +1,21 @@
-h1
-  | Главная страница
+h1 Listing events
+
+table
+  thead
+    tr
+      th
+      th
+
+  tbody
+    - @events.each do |event|
+      tr
+        td = event.items.size
+        td = link_to event.name.truncate(80), event
+        td = link_to 'Edit', edit_event_path(event)
+
+br
+
 p
-  = link_to 'О нас', about_index_path
+  = link_to 'New Event', new_event_path
+p
+  = paginate @events

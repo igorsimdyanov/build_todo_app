@@ -35,13 +35,13 @@ class User < ApplicationRecord
   end
 
   def normalize_name
-    self.name = name.downcase.titleize
+    self.name = name&.downcase&.titleize
   end
 
   def normalize_email
-    self.email = email.downcase
+    self.email = email&.downcase
   end
-  
+
   def set_role
     self.role ||= Role.find_by(code: :default)
   end

@@ -25,6 +25,10 @@ gem 'slim-rails'
 gem 'kaminari'
 
 group :development, :test do
+  gem 'shoulda-matchers'
+  gem 'simplecov', require: false
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
   gem 'ffaker'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end

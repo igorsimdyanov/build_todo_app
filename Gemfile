@@ -23,6 +23,8 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'slim-rails'
 gem 'kaminari'
+gem 'devise'
+gem 'pundit'
 
 group :development, :test do
   gem 'shoulda-matchers'
@@ -31,6 +33,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'ffaker'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'letter_opener'
 end
 
 group :development do

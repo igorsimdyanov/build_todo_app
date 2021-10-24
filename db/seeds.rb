@@ -7,6 +7,7 @@ Comment.destroy_all
 default_role = Role.create!(name: 'Пользователь', code: :default)
 admin_role = Role.create!(name: 'Администратор', code: :admin)
 
+# wm@example.org
 admin_email = 'admin@example.com'
 User.create! name: 'Администратор',
              email: admin_email,

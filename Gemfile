@@ -33,6 +33,8 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'ffaker'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'pry-byebug'
+  gem 'pry-rails'
   gem 'letter_opener'
 end
 

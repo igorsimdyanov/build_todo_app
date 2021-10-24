@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
   before_destroy :log_before_destory
   after_destroy :log_after_destory
   before_validation :normalize_name, on: :create
@@ -23,6 +27,12 @@ class User < ApplicationRecord
   scope :default, -> { where(role_id: Role.find_by(code: :default)) }
   scope :fresh, ->(created_at) { where('created_at > ?', created_at) }
   scope :default_fresh, ->(created_at) { default.fresh(created_at) }
+
+  Role.find_each do |role|
+    define_method "#{role.code}?" do
+      role_id == role.id
+    end
+  end
 
   private
 

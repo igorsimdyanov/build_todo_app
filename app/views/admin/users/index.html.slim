@@ -11,7 +11,7 @@ table
 
   tbody
     - @admin_users.each do |admin_user|
-      tr
+      tr style="background-color:#{cycle('#ddd', '#fff')}"
         td = admin_user.name
         td = admin_user.email
         td = admin_user.role.name

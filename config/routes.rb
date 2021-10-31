@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     resources :items
   end
   get :about, to: 'about#index'
+  post :toggle, to: 'locales#toggle'
+
   get 'events/page/(:page(.:format))', to: 'events#index'
   root 'events#index'
 end

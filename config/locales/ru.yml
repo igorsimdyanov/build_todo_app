@@ -1,22 +1,48 @@
 ru:
+  date:
+    formats:
+      default: '%d.%m.%Y'
+  about: О нас
+  main_page: Главная страница
+  current_date: Текущая дата
+  visits: Посещений
   label:
     login: Вход
     logout: Выход
     hello: Привет, %s
     registration: Регистрация
+
+    index:             Список
+    new:               Создание
+    edit:              Редактирование
+
   activerecord:
     errors:
       messages:
         blank: обязательно для заполнения
         too_short: слишком коротко
 
-        models:
-        user: Пользователи
-        post: Сообщения
+    models:
+      user:
+        zero: пользователей
+        one: пользователь
+        few: пользователя
+        many: пользователей
+        other: пользователи
+        accusative: пользователя
+        genitive: пользователь
+        dative: пользователю
+      visit:
+        zero: посещений
+        one: посещение
+        few: посещения
+        many: посещений
+        other: посещения
+      post: Сообщения
 
-        attributes:
-          user:
-            password:              Пароль
-            Password_confirmation: Подтверждение
-            email:                 Email
-            name:                  Имя пользователя
+    attributes:
+      user:
+        password:              Пароль
+        password_confirmation: Подтверждение
+        email:                 Email
+        name:                  Имя пользователя

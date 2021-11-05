@@ -34,6 +34,10 @@ class User < ApplicationRecord
     end
   end
 
+  def active_for_authentication?
+    super && active?
+  end
+
   private
 
   def log_before_destory

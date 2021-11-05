@@ -7,4 +7,8 @@ module Admin::ApplicationHelper
       t("activerecord.models.#{klass.name.tableize.singularize}.#{action_case}")
     ].join(' ')
   end
+
+  def activate_title(user)
+    user.active? ? 'Disactivate' : 'Activate'
+  end
 end

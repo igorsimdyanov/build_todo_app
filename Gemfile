@@ -26,6 +26,7 @@ gem 'slim-rails'
 gem 'kaminari'
 gem 'devise'
 gem 'pundit'
+gem 'jquery-rails'
 
 group :development, :test do
   gem 'shoulda-matchers'

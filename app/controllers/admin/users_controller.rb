@@ -1,5 +1,5 @@
 class Admin::UsersController < Admin::ApplicationController
-  before_action :set_admin_user, only: %i[edit update destroy]
+  before_action :set_admin_user, only: %i[edit update destroy toggle]
 
   def index
     authorize [:admin, User]
@@ -43,12 +43,16 @@ class Admin::UsersController < Admin::ApplicationController
     end
   end
 
+  def toggle
+    authorize [:admin, @admin_user]
+    @admin_user.update_column(:active, !@admin_user.active)
+
+    render partial: 'admin_user', object: @admin_user
+  end
+
   def destroy
     @admin_user.destroy
-    respond_to do |format|
-      format.html { redirect_to admin_users_path, notice: "User was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    render json: @admin_user
   end
 
   private

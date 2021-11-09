@@ -27,6 +27,8 @@ gem 'kaminari'
 gem 'devise'
 gem 'pundit'
 gem 'jquery-rails'
+gem 'bootstrap'
+gem 'font-awesome-rails'
 
 group :development, :test do
   gem 'shoulda-matchers'

@@ -24,10 +24,10 @@ class EventsController < ApplicationController
 
   # POST /events or /events.json
   def create
-    @event = Event.new(event_params)
+    @event = current_user.events.create(event_params)
 
     respond_to do |format|
-      if @event.save
+      if @event
         format.html { redirect_to @event, notice: "Event was successfully created." }
         format.json { render :show, status: :created, location: @event }
       else
@@ -69,6 +69,6 @@ class EventsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.require(:event).permit(:name, :context, :done)
+      params.require(:event).permit(:name, :content, :finished_at, :done)
     end
 end

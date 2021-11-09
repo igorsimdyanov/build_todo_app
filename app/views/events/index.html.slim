@@ -1,9 +1,10 @@
 h1 Listing events
 
-table
+table.table.table-striped
   thead
     tr
-      th
+      th ID
+      th Дело
       th
 
   tbody
@@ -11,6 +12,7 @@ table
 br
 
 p
-  = link_to 'New Event', new_event_path
+  = link_to new_event_path, class: 'btn btn-secondary' do
+    span.fa.fa-plus
 p
   = paginate @events

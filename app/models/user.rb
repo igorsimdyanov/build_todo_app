@@ -38,6 +38,14 @@ class User < ApplicationRecord
     super && active?
   end
 
+  def attributes
+    super.filter{ |k, _v| %w[name email].include? k }.merge(description: description)
+  end
+
+  def description
+    "#{name} (#{email})"
+  end
+
   private
 
   def log_before_destory

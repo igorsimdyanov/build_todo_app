@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RootApi => '/'
   namespace :admin do
     root 'users#index'
     resources :users do

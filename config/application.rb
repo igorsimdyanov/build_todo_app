@@ -28,5 +28,7 @@ module Todo1
     config.time_zone = 'Moscow'
 
     config.generators.system_tests = nil
+
+    config.paths.add Rails.root.join('app', 'api', 'helpers').to_s, eager_load: true
   end
 end

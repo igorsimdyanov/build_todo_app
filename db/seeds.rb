@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Item.destroy_all
 Event.destroy_all
 User.destroy_all
@@ -46,7 +48,7 @@ end
 Item.create! hash_items
 
 hash_comments = 200.times.map do
-  commentable = ((rand(2) == 1) ? events : users).sample
+  commentable = (rand(2) == 1 ? events : users).sample
   {
     content: FFaker::HipsterIpsum.paragraphs,
     commentable_id: commentable.id,

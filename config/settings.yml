@@ -1,0 +1,3 @@
+name: TODO-приложение (<%= Rails.env %>)
+pager:
+  per_page: 5

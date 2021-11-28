@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Entities
   class User < Grape::Entity
     root 'users', 'user'

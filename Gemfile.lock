@@ -93,6 +93,10 @@ GEM
       warden (~> 1.2.3)
     diff-lcs (1.4.4)
     docile (1.4.0)
+    dotenv (2.7.6)
+    dotenv-rails (2.7.6)
+      dotenv (= 2.7.6)
+      railties (>= 3.2)
     dry-configurable (0.13.0)
       concurrent-ruby (~> 1.0)
       dry-core (~> 0.6)
@@ -366,6 +370,7 @@ DEPENDENCIES
   byebug
   config
   devise
+  dotenv-rails
   factory_bot_rails
   ffaker
   font-awesome-rails

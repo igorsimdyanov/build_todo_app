@@ -27,6 +27,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'bootstrap'
 gem 'config'
 gem 'devise'
+gem 'dotenv-rails'
 gem 'font-awesome-rails'
 gem 'grape'
 gem 'grape-entity'

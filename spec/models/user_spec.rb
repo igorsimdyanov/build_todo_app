@@ -1,24 +1,26 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
 #
-#  id                                                           :bigint           not null, primary key
-#  active(пользователь активен (true) или заблокирован (false)) :boolean          default(TRUE)
-#  current_sign_in_at                                           :datetime
-#  current_sign_in_ip                                           :string
-#  email(Электронный адрес пользователя)                        :string
-#  encrypted_password                                           :string           default(""), not null
-#  events_count                                                 :integer
-#  last_sign_in_at                                              :datetime
-#  last_sign_in_ip                                              :string
-#  name(Имя, которое используется для входа)                    :string
-#  remember_created_at                                          :datetime
-#  reset_password_sent_at                                       :datetime
-#  reset_password_token                                         :string
-#  sign_in_count                                                :integer          default(0), not null
-#  created_at                                                   :datetime         not null
-#  updated_at                                                   :datetime         not null
-#  role_id(Роль пользователя)                                   :integer
+#  id                     :bigint           not null, primary key
+#  active                 :boolean          default(TRUE)
+#  current_sign_in_at     :datetime
+#  current_sign_in_ip     :string
+#  email                  :string
+#  encrypted_password     :string           default(""), not null
+#  events_count           :integer
+#  last_sign_in_at        :datetime
+#  last_sign_in_ip        :string
+#  name                   :string
+#  remember_created_at    :datetime
+#  reset_password_sent_at :datetime
+#  reset_password_token   :string
+#  sign_in_count          :integer          default(0), not null
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  role_id                :integer
 #
 # Indexes
 #
@@ -33,7 +35,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  subject { build(:user) }
+  subject(:user) { build(:user) }
 
   it { is_expected.to validate_presence_of(:name) }
   it { is_expected.to validate_length_of(:name).is_at_least(2) }
@@ -42,10 +44,16 @@ RSpec.describe User, type: :model do
   it { is_expected.to belong_to(:role) }
   it { is_expected.to have_many(:events).dependent(:destroy) }
   it { is_expected.to have_many(:comments).dependent(:destroy) }
-  it { is_expected.to have_many(:commented_users)
-                      .through(:comments)
-                      .source(:commentable) }
-  it { is_expected.to have_many(:commented_events)
-                      .through(:comments)
-                      .source(:commentable) }
+
+  it {
+    expect(user).to have_many(:commented_users)
+      .through(:comments)
+      .source(:commentable)
+  }
+
+  it {
+    expect(user).to have_many(:commented_events)
+      .through(:comments)
+      .source(:commentable)
+  }
 end

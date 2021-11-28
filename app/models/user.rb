@@ -1,24 +1,26 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
 #
-#  id                                                           :bigint           not null, primary key
-#  active(пользователь активен (true) или заблокирован (false)) :boolean          default(TRUE)
-#  current_sign_in_at                                           :datetime
-#  current_sign_in_ip                                           :string
-#  email(Электронный адрес пользователя)                        :string
-#  encrypted_password                                           :string           default(""), not null
-#  events_count                                                 :integer
-#  last_sign_in_at                                              :datetime
-#  last_sign_in_ip                                              :string
-#  name(Имя, которое используется для входа)                    :string
-#  remember_created_at                                          :datetime
-#  reset_password_sent_at                                       :datetime
-#  reset_password_token                                         :string
-#  sign_in_count                                                :integer          default(0), not null
-#  created_at                                                   :datetime         not null
-#  updated_at                                                   :datetime         not null
-#  role_id(Роль пользователя)                                   :integer
+#  id                     :bigint           not null, primary key
+#  active                 :boolean          default(TRUE)
+#  current_sign_in_at     :datetime
+#  current_sign_in_ip     :string
+#  email                  :string
+#  encrypted_password     :string           default(""), not null
+#  events_count           :integer
+#  last_sign_in_at        :datetime
+#  last_sign_in_ip        :string
+#  name                   :string
+#  remember_created_at    :datetime
+#  reset_password_sent_at :datetime
+#  reset_password_token   :string
+#  sign_in_count          :integer          default(0), not null
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  role_id                :integer
 #
 # Indexes
 #
@@ -38,8 +40,8 @@ class User < ApplicationRecord
   before_destroy :log_before_destory
   after_destroy :log_after_destory
   before_validation :normalize_name, on: :create
-  before_validation :normalize_email, if: Proc.new { |u| u.email.present? }
-  before_validation :set_role, on: [ :create, :update ]
+  before_validation :normalize_email, if: proc { |u| u.email.present? }
+  before_validation :set_role, on: %i[create update]
 
   has_many :events, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -71,7 +73,7 @@ class User < ApplicationRecord
   end
 
   def attributes
-    super.filter{ |k, _v| %w[name email].include? k }.merge(description: description)
+    super.filter { |k, _v| %w[name email].include? k }.merge(description: description)
   end
 
   def description

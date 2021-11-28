@@ -1,15 +1,17 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: events
 #
-#  id                                               :bigint           not null, primary key
-#  content(Детальное описание)                      :text
-#  done(Статус: завершено (true), или нет (false))  :boolean          default(FALSE)
-#  finished_at(Дата и время завершения дела)        :datetime
-#  name(Заголовок)                                  :string
-#  created_at                                       :datetime         not null
-#  updated_at                                       :datetime         not null
-#  user_id(Внешний ключ для связи с таблицей users) :bigint
+#  id          :bigint           not null, primary key
+#  content     :text
+#  done        :boolean          default(FALSE)
+#  finished_at :datetime
+#  name        :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  user_id     :bigint
 #
 # Indexes
 #

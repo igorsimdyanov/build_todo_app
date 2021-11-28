@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: comments
 #
-#  id                                               :bigint           not null, primary key
-#  commentable_type                                 :string           not null
-#  content(Содержимое комментария)                  :text
-#  created_at                                       :datetime         not null
-#  updated_at                                       :datetime         not null
-#  commentable_id                                   :bigint           not null
-#  user_id(Внешний ключ для связи с таблицей users) :bigint
+#  id               :bigint           not null, primary key
+#  commentable_type :string           not null
+#  content          :text
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  commentable_id   :bigint           not null
+#  user_id          :bigint
 #
 # Indexes
 #

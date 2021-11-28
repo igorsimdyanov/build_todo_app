@@ -6,7 +6,10 @@ class EventsController < ApplicationController
 
   # GET /events or /events.json
   def index
-    @events = policy_scope(Event).includes(:items).page(params[:page]).per(3)
+    @events = policy_scope(Event)
+              .includes(:items)
+              .page(params[:page])
+              .per(Settings.pager.per_page)
   end
 
   # GET /events/1 or /events/1.json

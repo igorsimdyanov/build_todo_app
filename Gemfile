@@ -25,6 +25,7 @@ gem 'rails-i18n', '~> 6.0.0'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'bootstrap'
+gem 'config'
 gem 'devise'
 gem 'font-awesome-rails'
 gem 'grape'

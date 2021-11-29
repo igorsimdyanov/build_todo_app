@@ -10,6 +10,10 @@ class EventsController < ApplicationController
               .includes(:items)
               .page(params[:page])
               .per(Settings.pager.per_page)
+
+    Rack::MiniProfiler.step('Загрузка всех событий') do
+      @all = Event.all
+    end
   end
 
   # GET /events/1 or /events/1.json

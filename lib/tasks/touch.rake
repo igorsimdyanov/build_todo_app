@@ -1,7 +1,6 @@
 namespace :touch do
   desc 'Создание файла hello_from_whenever.txt'
   task hello_from_whenever: :environment do
-    puts Rails.root.join('tmp/hello_from_whenever.txt')
     FileUtils.touch Rails.root.join('tmp/hello_from_whenever.txt')
   end
 

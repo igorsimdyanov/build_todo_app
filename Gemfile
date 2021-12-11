@@ -36,6 +36,7 @@ gem 'kaminari'
 gem 'pundit'
 gem 'slim-rails'
 gem 'whenever', require: false
+gem 'resque'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

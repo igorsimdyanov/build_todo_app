@@ -33,8 +33,6 @@
 #  fk_rails_...  (role_id => roles.id)
 #
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   before_destroy :log_before_destory
@@ -61,6 +59,10 @@ class User < ApplicationRecord
   scope :default, -> { where(role_id: Role.find_by(code: :default)) }
   scope :fresh, ->(created_at) { where('created_at > ?', created_at) }
   scope :default_fresh, ->(created_at) { default.fresh(created_at) }
+
+  has_one_attached :avatar do |attachable|
+    attachable.variant :thumb, resize: '50x50'
+  end
 
   Role.find_each do |role|
     define_method "#{role.code}?" do

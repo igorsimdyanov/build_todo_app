@@ -26,4 +26,5 @@ class Event < ApplicationRecord
   has_many :items, dependent: :destroy
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :commentators, through: :comments, source: :user
+  has_many_attached :files
 end

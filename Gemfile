@@ -38,6 +38,7 @@ gem 'pundit'
 gem 'resque'
 gem 'slim-rails'
 gem 'whenever', require: false
+gem 'activeadmin'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

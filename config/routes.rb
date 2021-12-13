@@ -5,14 +5,6 @@ require 'resque/server'
 Rails.application.routes.draw do
   mount RootApi => '/'
   mount Resque::Server.new, at: '/resque'
-  namespace :admin do
-    root 'users#index'
-    resources :users do
-      member do
-        post :toggle, action: :toggle
-      end
-    end
-  end
   devise_for :users
   resources :events do
     resources :items

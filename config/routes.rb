@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   mount RootApi => '/'
   mount Resque::Server.new, at: '/resque'
   devise_for :users
+  ActiveAdmin.routes(self)
   resources :events do
     resources :items
   end

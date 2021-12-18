@@ -2,8 +2,7 @@ header.row
   .col-1
     .text-center
       - if current_user_avatar?
-        = image_tag current_user.avatar.variant(resize_to_fill: [200, 200], convert: 'png'), class: :rounded
-        / = image_tag current_user.avatar.variant(resize_to_fill: [200, 200], rotate: 90), class: :rounded
+        = image_tag current_user.avatar.variant(resize_to_fill: [50, 50], convert: 'png'), class: :rounded
       - else
         i.fa.fa-user style='font-size:50px'
   .col-11

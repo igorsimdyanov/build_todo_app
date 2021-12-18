@@ -50,6 +50,7 @@ Item.create! hash_items
 hash_comments = 200.times.map do
   commentable = (rand(2) == 1 ? events : users).sample
   {
+    user: users.sample,
     content: FFaker::HipsterIpsum.paragraphs,
     commentable_id: commentable.id,
     commentable_type: commentable.class.to_s

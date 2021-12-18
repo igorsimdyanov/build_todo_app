@@ -4,6 +4,11 @@ class ApplicationController < ActionController::Base
   include Pundit
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  def access_denied(exception)
+    sign_out
+    redirect_to root_path
+  end
+
   private
 
   def configure_permitted_parameters

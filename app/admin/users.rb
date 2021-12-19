@@ -2,6 +2,7 @@ ActiveAdmin.register User do
   menu priority: 1, label: 'Пользователи'
   permit_params :email, :name, :active, :role_id, :password, :password_confirmation
   actions :all, except: [:update, :destroy]
+  config.sort_order = 'name'
 
   index do
     selectable_column

@@ -15,10 +15,6 @@ module ActiveAdmin
       user.admin?
     end
 
-    # def home?
-    #   user.admin?
-    # end
-
     def read?
       user.admin?
     end

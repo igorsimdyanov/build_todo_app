@@ -41,6 +41,7 @@ ru:
         many: посещений
         other: посещения
       post: Сообщения
+      event: События
 
     attributes:
       user:

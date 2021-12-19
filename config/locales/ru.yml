@@ -16,6 +16,8 @@ ru:
     new:               Создание
     edit:              Редактирование
 
+    admin:             Система администрирования
+
   activerecord:
     errors:
       messages:

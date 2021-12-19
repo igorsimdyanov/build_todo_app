@@ -1,0 +1,9 @@
+ru:
+  active_admin:
+    view: Подробнее
+    edit: Редактировать
+    resources:
+      user:
+        new_model: Создать пользователя
+        edit_model: Редактировать пользователя
+        delete_model: Удалить пользователя

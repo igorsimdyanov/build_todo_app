@@ -11,6 +11,11 @@ header.row
         li
           span> = t('label.hello') % current_user.name
           span = link_to(t('label.edit'), edit_user_registration_path)
+          - if current_user.admin?
+            span< 
+              |(
+              = link_to(t('label.admin'), admin_dashboard_path)
+              |)
         li
           = link_to t('label.logout'), destroy_user_session_path, method: :delete
       - else

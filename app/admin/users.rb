@@ -14,6 +14,19 @@ ActiveAdmin.register User do
     actions
   end
 
+  controller do
+    def csv_filename
+      'csv_report.csv'
+    end
+  end
+
+  csv do
+    column :id
+    column :name
+    column('Электронная почта', &:email)
+    column('Роль') { |user| user.role.code }
+  end
+
   filter :email
   filter :name
   filter :active

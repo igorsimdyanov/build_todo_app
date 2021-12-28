@@ -35,6 +35,10 @@ module ActiveAdmin
       user.admin?
     end
 
+    def report?
+      user.admin?
+    end
+
     class Scope
       def initialize(user, scope)
         @user = user

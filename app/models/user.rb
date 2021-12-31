@@ -42,6 +42,8 @@ class User < ApplicationRecord
   before_validation :set_role, on: %i[create update]
 
   has_many :events, dependent: :destroy
+  has_many :items, through: :events
+
   has_many :comments, dependent: :destroy
   has_many :commented_events,
            through: :comments,

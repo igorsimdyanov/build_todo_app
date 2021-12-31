@@ -44,18 +44,3 @@ ActiveAdmin.register Event do
     end
   end
 end
-
-    # panel 'Сообщения' do
-    #   scope = resource.rabbit_messages.order(created_at: :desc)
-    #   table_for scope do
-    #     column 'ID', :id
-    #     column 'Action', :action
-    #     column 'Routing Key', :routing_key
-    #     column 'Direction', :direction
-    #     column 'Success', :success
-    #     column 'Дата отправки', :created_at
-    #     column do |message|
-    #       tag.a 'Открыть', href: admin_rabbit_message_path(message)
-    #     end
-    #   end
-    # end

@@ -35,6 +35,18 @@ module ActiveAdmin
       user.admin?
     end
 
+    def report?
+      user.admin?
+    end
+
+    def download?
+      user.admin?
+    end
+
+    def upload?
+      user.admin?
+    end
+
     class Scope
       def initialize(user, scope)
         @user = user

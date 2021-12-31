@@ -1,16 +1,16 @@
 module Services
   class UsersReport
-    def self.call
-      new.call
+    def self.call(*args)
+      new.call(*args)
     end
 
-    def call
+    def call(from, to)
       package = Axlsx::Package.new
       workbook = package.workbook
-      sheet = worksheets(workbook)
+      sheet = workbook.add_worksheet(name: 'Пользователи')
 
-      3.times do |row|
-        sheet.add_row ["A#{row}", "B#{row}"]
+      scope(from, to).find_each do |user|
+        sheet.add_row [user.name, user.events.size, user.items.size]
       end
 
       package.to_stream.read
@@ -18,12 +18,10 @@ module Services
 
     private
 
-    def worksheets(workbook)
-      first = workbook.add_worksheet(name: 'Первый')
-      workbook.add_worksheet(name: 'Второй')
-      workbook.add_worksheet(name: 'Третий')
-
-      first
+    def scope(from, to)
+      scope = User.includes(events: :items).order(:name)
+      scope = scope.where(created_at: from..to) if from || to
+      scope
     end
   end
 end

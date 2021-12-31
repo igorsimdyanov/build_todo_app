@@ -41,6 +41,7 @@ gem 'resque'
 gem 'slim-rails'
 gem 'whenever', require: false
 gem 'caxlsx'
+gem 'roo'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

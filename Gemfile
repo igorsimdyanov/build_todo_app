@@ -42,6 +42,7 @@ gem 'slim-rails'
 gem 'whenever', require: false
 gem 'caxlsx'
 gem 'roo'
+gem 'aasm'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

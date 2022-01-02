@@ -24,8 +24,11 @@ gem 'rails-i18n', '~> 6.0.0'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
+gem 'aasm'
+gem 'aasm-diagram', require: false
 gem 'activeadmin'
 gem 'bootstrap'
+gem 'caxlsx'
 gem 'config'
 gem 'devise'
 gem 'devise-i18n'
@@ -38,11 +41,9 @@ gem 'jquery-rails'
 gem 'kaminari'
 gem 'pundit'
 gem 'resque'
+gem 'roo'
 gem 'slim-rails'
 gem 'whenever', require: false
-gem 'caxlsx'
-gem 'roo'
-gem 'aasm'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

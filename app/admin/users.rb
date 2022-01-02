@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 ActiveAdmin.register User do
   menu priority: 1, label: 'Пользователи'
   permit_params :email, :name, :active, :role_id, :password, :password_confirmation
-  actions :all, except: [:update, :destroy]
+  actions :all, except: %i[update destroy]
   config.sort_order = 'name'
 
   index do
@@ -33,7 +35,7 @@ ActiveAdmin.register User do
   filter :role
 
   form do |f|
-    f.semantic_errors *f.object.errors.keys
+    f.semantic_errors(*f.object.errors.keys)
     f.inputs do
       f.input :email
       f.input :name

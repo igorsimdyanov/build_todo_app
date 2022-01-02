@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ActiveAdmin.register_page 'Импорт/экспорт пользователей' do
   page_action :download, method: :post do
     send_data Services::UsersDownload.call,

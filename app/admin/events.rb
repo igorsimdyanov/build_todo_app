@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ActiveAdmin.register Event do
   menu priority: 2
 
@@ -5,8 +7,8 @@ ActiveAdmin.register Event do
     id_column
     column 'Содержимое' do |event|
       tag.strong(event.name.truncate(50)) +
-      tag.br +
-      event.name.truncate(50)
+        tag.br +
+        event.name.truncate(50)
     end
     column :done
     column :user

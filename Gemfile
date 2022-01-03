@@ -25,7 +25,6 @@ gem 'rails-i18n', '~> 6.0.0'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'aasm'
-gem 'aasm-diagram', require: false
 gem 'activeadmin'
 gem 'bootstrap'
 gem 'caxlsx'
@@ -58,6 +57,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'aasm-diagram'
   gem 'annotate'
   gem 'listen', '~> 3.3'
   gem 'memory_profiler'

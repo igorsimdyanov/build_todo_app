@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   include Pundit
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  def access_denied(exception)
+  def access_denied(_exception)
     sign_out
     redirect_to root_path
   end
@@ -17,6 +17,6 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(user)
-    user.admin? ? admin_dashboard_path : root_path 
+    user.admin? ? admin_dashboard_path : root_path
   end
 end

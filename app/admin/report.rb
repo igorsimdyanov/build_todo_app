@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ActiveAdmin.register_page 'Отчет' do
   action_item :export_users do
     link_to 'Статистика', admin_otchet_report_path, method: :post

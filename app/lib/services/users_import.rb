@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Services
   class UsersImport
     def self.call(*args)
@@ -24,7 +26,7 @@ module Services
         row[0].value.to_i, # id
         row[1].value,      # name
         row[2].value,      # email
-        row[3].value,      # code
+        row[3].value      # code
       ]
     end
   end

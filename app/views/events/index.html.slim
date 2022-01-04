@@ -8,7 +8,7 @@ table.table.table-striped
       th
 
   tbody
-    - cache [current_user, :events_list] do
+    - cache_unless current_user.admin?, [current_user, :events_list, params[:page]] do
       = render partial: 'event', collection: @events
 br
 

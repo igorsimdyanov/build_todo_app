@@ -1,24 +1,16 @@
 # frozen_string_literal: true
-
 require_relative 'boot'
 
 require 'rails'
-# Pick the frameworks you want:
 require 'active_model/railtie'
 require 'active_job/railtie'
 require 'active_record/railtie'
 require 'active_storage/engine'
 require 'action_controller/railtie'
 require 'action_mailer/railtie'
-# require "action_mailbox/engine"
-# require "action_text/engine"
 require 'action_view/railtie'
-# require "action_cable/engine"
 require 'sprockets/railtie'
-# require "rails/test_unit/railtie"
 
-# Require the gems listed in Gemfile, including any gems
-# you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
 Dotenv::Railtie.load
@@ -36,5 +28,16 @@ module Todo1
 
     config.paths.add Rails.root.join('lib').to_s, eager_load: true
     config.paths.add Rails.root.join('app/api/helpers').to_s, eager_load: true
+
+    if Rails.env.production? || ENV['CACHE_TURN_ON']
+      config.action_controller.perform_caching = true
+      config.action_controller.enable_fragment_cache_logging = true
+      config.active_record.cache_versioning = false
+      config.cache_store = :redis_store, Rails.application.config_for(:redis).deep_symbolize_keys
+    else
+      config.action_controller.perform_caching = false
+      config.cache_store = :null_store
+    end
+
   end
 end

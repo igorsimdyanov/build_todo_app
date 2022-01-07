@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_03_071658) do
+ActiveRecord::Schema.define(version: 2022_01_06_115924) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,7 +64,9 @@ ActiveRecord::Schema.define(version: 2022_01_03_071658) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "commentable_type", null: false
     t.bigint "commentable_id", null: false
+    t.integer "parent_id", comment: "ссылка на родительский комментарий"
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
+    t.index ["parent_id"], name: "index_comments_on_parent_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 

@@ -47,13 +47,20 @@ hash_items = 200.times.map do
 end
 Item.create! hash_items
 
-hash_comments = 200.times.map do
-  commentable = (rand(2) == 1 ? events : users).sample
-  {
-    user: users.sample,
-    content: FFaker::HipsterIpsum.paragraphs,
-    commentable_id: commentable.id,
-    commentable_type: commentable.class.to_s
-  }
+def create_event(users, event, parent_id = nil)
+  Comment.create!(
+             user: users.sample,
+             content: FFaker::HipsterIpsum.paragraphs,
+             commentable_id: event.id,
+             commentable_type: event.class.to_s,
+             parent_id: parent_id
+           )
 end
-Comment.create! hash_comments
+
+events.each do |event|
+  root = create_event(users, event)
+    create_event(users, event, root.id)
+    first = create_event(users, event, root.id)
+      create_event(users, event, first.id)
+    create_event(users, event, root.id)
+end

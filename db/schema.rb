@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_06_115924) do
+ActiveRecord::Schema.define(version: 2022_01_08_074150) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -104,6 +104,14 @@ ActiveRecord::Schema.define(version: 2022_01_06_115924) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "state", comment: "Состояния AASM: красный, желтый, зеленый"
     t.boolean "active", default: true, comment: "true - включен, false - выключен"
+  end
+
+  create_table "tree_comments", comment: "Таблица замыканий для комментариев", force: :cascade do |t|
+    t.integer "parent_id", comment: "Внешний ключ для родительского комментария"
+    t.integer "child_id", comment: "Внешний ключ для ответа"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["parent_id", "child_id"], name: "index_tree_comments_on_parent_id_and_child_id", unique: true
   end
 
   create_table "users", comment: "Пользователи системы", force: :cascade do |t|

@@ -32,9 +32,9 @@
   - if @comments
     p
       strong Comments:
-      - @comments.each do |line|
-        p(style="padding-left:#{line[:level] * 20}px")
-          = line[:comment].content
+      - Comment.each_with_level(@comments) do |comment, level|
+        p(style="padding-left:#{level * 20}px")
+          = comment.content
 
   => link_to 'Edit', edit_event_path(@event)
   '|

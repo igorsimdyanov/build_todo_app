@@ -65,7 +65,7 @@ def create_tree_comments(comment, parent_id)
     child_id: comment.id
   }]
   if parent_id
-    TreeComment.where(parent_id: parent_id).each do |tree|
+    TreeComment.where(child_id: parent_id).each do |tree|
       tree_comments << {
         parent_id: tree.parent_id,
         child_id: comment.id
@@ -74,14 +74,6 @@ def create_tree_comments(comment, parent_id)
   end
   TreeComment.create!(tree_comments.uniq)
 end
-
-# events.each do |event|
-#   root = create_event(users, event)
-#     create_event(users, event, root.id)
-#     first = create_event(users, event, root.id)
-#       create_event(users, event, first.id)
-#     create_event(users, event, root.id)
-# end
 
 events.each do |event|
   root = create_event(users, event)

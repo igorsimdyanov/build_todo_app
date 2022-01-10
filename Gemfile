@@ -26,6 +26,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'aasm'
 gem 'activeadmin'
+gem 'awesome_nested_set'
 gem 'bootstrap'
 gem 'caxlsx'
 gem 'config'

@@ -85,6 +85,8 @@ GEM
     ast (2.4.2)
     autoprefixer-rails (10.3.3.0)
       execjs (~> 2)
+    awesome_nested_set (3.4.0)
+      activerecord (>= 4.0.0, < 7.0)
     bcrypt (3.1.16)
     bindex (0.8.1)
     bootsnap (1.7.7)
@@ -459,6 +461,7 @@ DEPENDENCIES
   aasm-diagram
   activeadmin
   annotate
+  awesome_nested_set
   bootsnap (>= 1.4.4)
   bootstrap
   byebug

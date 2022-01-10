@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require_relative 'boot'
 
 require 'rails'
@@ -38,6 +39,5 @@ module Todo1
       config.action_controller.perform_caching = false
       config.cache_store = :null_store
     end
-
   end
 end

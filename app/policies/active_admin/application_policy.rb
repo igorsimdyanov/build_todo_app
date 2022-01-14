@@ -13,10 +13,6 @@ module ActiveAdmin
       user.admin?
     end
 
-    def show?
-      user.admin?
-    end
-
     def read?
       user.admin?
     end

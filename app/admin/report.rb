@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/BlockLength
 ActiveAdmin.register_page 'Отчет' do
   action_item :export_users do
     link_to 'Статистика', admin_otchet_report_path, method: :post
   end
 
   controller do
+    # rubocop:disable Metrics/MethodLength
     def date_interval
       report = params['report_form']
       return [nil, nil] unless report
@@ -27,6 +29,7 @@ ActiveAdmin.register_page 'Отчет' do
 
       [from_date, to_date]
     end
+    # rubocop:enable Metrics/MethodLength
   end
 
   page_action :report, method: :post do
@@ -40,3 +43,4 @@ ActiveAdmin.register_page 'Отчет' do
     render partial: 'form'
   end
 end
+# rubocop:enable Metrics/BlockLength

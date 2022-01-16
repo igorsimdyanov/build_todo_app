@@ -1,4 +1,4 @@
-class Services::Users::MaxEvents
+class Services::Users::MaxEvents::Email
   attr_accessor :max_count
 
   def self.call(max_count = 3)
@@ -10,6 +10,6 @@ class Services::Users::MaxEvents
   end
 
   def call
-    Queries::Users::MaxEvents.call(max_count)
+    Queries::Users::MaxEvents.call(max_count).pluck(:email)
   end
 end

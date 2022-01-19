@@ -470,6 +470,7 @@ DEPENDENCIES
   devise
   devise-i18n
   dotenv-rails
+  dry-initializer
   factory_bot_rails
   ffaker
   font-awesome-rails

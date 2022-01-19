@@ -1,13 +1,10 @@
+# frozen_string_literal: true
+
 class Queries::Users::MaxEvents
-  attr_accessor :max_count
+  include Callable
+  extend Dry::Initializer
 
-  def self.call(max_count = 3)
-    new(max_count).call
-  end
-
-  def initialize(max_count)
-    @max_count = max_count
-  end
+  param :max_count, default: proc { 3 }
 
   def call
     User.where(id: user_ids)
@@ -18,7 +15,7 @@ class Queries::Users::MaxEvents
   def user_ids
     Event.group(:user_id)
          .count
-         .max_by(max_count) { |_user_id, count| count}
+         .max_by(max_count) { |_user_id, count| count }
          .map { |user_id, _count| user_id }
   end
 end

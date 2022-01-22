@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class Unit < Dry::Struct
-  Currency = Types::String.default('RUB'.freeze).enum('RUB', 'USD', 'EUR')
+  Currency = Types::String.default('RUB').enum('RUB', 'USD', 'EUR')
 
   attribute :name, Types::String
   attribute? :description, Types::String

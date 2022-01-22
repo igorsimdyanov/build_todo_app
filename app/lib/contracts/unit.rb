@@ -8,24 +8,16 @@ module Contracts
     params do
       required(:name).filled(:string)
       optional(:description).maybe(:string)
-      required(:price).value(:float)
+      required(:price).value(:float, gt?: 0)
       optional(:currency).maybe(:string)
       required(:attachments).array(:hash) do
         required(:name).filled(:string)
         required(:url).filled(:string)
       end
     end
+
+    rule(:name) do
+      key.failure('длина названия превышает 80 символов') if value.size > 80
+    end
   end
 end
-#      include Callable
-
-unit = {
-  name: 'MacBookPro',
-  description: 'Описание',
-  price: 200000.0,
-  attachments: [
-   { name: 'Внешний вид', url: '/apple/macbookpro/view.jpg' },
-   { name: 'Вид сбоку', url: '/apple/macbookpro/side_view.jpg' }
-  ]
-}
-# result = Contracts::Unit.call(unit)

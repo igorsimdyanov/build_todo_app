@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Event, type: :model do
   context 'в невалидном состоянии' do
-    let(:event) { Event.new }
+    let(:event) { build(:event_wrong) }
 
     it 'когда пустое название' do
       expect(event.validate).to be_falsey
@@ -18,7 +18,7 @@ RSpec.describe Event, type: :model do
   end
 
   context 'в валидном состоянии' do
-    let(:event) { Event.new(name: 'Название события', user: User.new) }
+    let(:event) { create(:event) }
 
     it 'удовлетворяет валидациям' do
       expect(event).to be_valid

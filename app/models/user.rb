@@ -66,11 +66,11 @@ class User < ApplicationRecord
     attachable.variant :thumb, resize: '50x50'
   end
 
-  # Role.find_each do |role|
-  #   define_method "#{role.code}?" do
-  #     role_id == role.id
-  #   end
-  # end
+  Role.find_each do |role|
+    define_method "#{role.code}?" do
+      role_id == role.id
+    end
+  end
 
   def active_for_authentication?
     super && active?

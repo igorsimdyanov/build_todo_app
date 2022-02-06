@@ -11,16 +11,12 @@ class EventsController < ApplicationController
               .includes(:items)
               .page(params[:page])
               .per(Settings.pager.per_page)
-
-    Rack::MiniProfiler.step('Загрузка всех событий') do
-      @all = Event.all
-    end
   end
 
   # GET /events/1 or /events/1.json
   def show
     authorize @event
-    @comments = @event.comments.root.self_and_descendants.order(:lft)
+    @comments = @event.comments&.root&.self_and_descendants&.order(:lft)
   end
 
   # GET /events/new

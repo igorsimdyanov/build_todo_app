@@ -21,11 +21,11 @@
 #
 FactoryBot.define do
   factory :event do
-    name { "MyString" }
-    content { "MyText" }
+    name { FFaker::CheesyLingo.title }
+    content { FFaker::BaconIpsum.paragraph }
     done { false }
     user
-    finished_at { "2022-02-04 20:11:23" }
+    finished_at { FFaker::Time.datetime }
   end
 
   factory :event_wrong, parent: :event do

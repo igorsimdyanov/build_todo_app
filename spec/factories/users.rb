@@ -40,5 +40,11 @@ FactoryBot.define do
     role { create(:role) }
     password { '12345678' }
     password_confirmation { '12345678' }
+
+    after(:create) do |user|
+      def user.admin?
+        false
+      end
+    end
   end
 end

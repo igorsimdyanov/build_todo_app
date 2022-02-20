@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: events
@@ -44,8 +46,10 @@ RSpec.describe Event, type: :model do
   it { is_expected.to belong_to(:user).counter_cache(true) }
   it { is_expected.to have_many(:items).dependent(:destroy) }
   it { is_expected.to have_many(:comments).dependent(:destroy) }
-  it { is_expected.to have_many(:commentators)
-                       .through(:comments)
-                       .source(:user) }
 
+  it {
+    expect(subject).to have_many(:commentators)
+      .through(:comments)
+      .source(:user)
+  }
 end

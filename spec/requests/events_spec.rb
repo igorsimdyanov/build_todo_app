@@ -1,10 +1,13 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe EventsController, type: :controller do
   let(:user) { create(:user) }
   let(:event) { create(:event) }
   let(:event_own) { create(:event, user: user) }
-  before(:each) { sign_in(user) }
+
+  before { sign_in(user) }
 
   it :index do
     get :index
@@ -18,9 +21,9 @@ RSpec.describe EventsController, type: :controller do
 
   context 'при посещении детальной страницы' do
     it 'пользователь не может просматривать чужие события' do
-      expect {
+      expect do
         get :show, params: { id: event.id }
-      }.to raise_error(Pundit::NotAuthorizedError)
+      end.to raise_error(Pundit::NotAuthorizedError)
     end
 
     it 'пользователь может просматривать свои собственные события' do
@@ -36,9 +39,9 @@ RSpec.describe EventsController, type: :controller do
     end
 
     it 'количество events-записей увеличивается на 1' do
-      expect {
+      expect do
         post :create, params: { event: attributes_for(:event) }
-      }.to change { Event.count }.by 1
+      end.to change(Event, :count).by 1
     end
   end
 end

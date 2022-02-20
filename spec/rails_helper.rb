@@ -9,7 +9,7 @@ require File.expand_path('../config/environment', __dir__)
 # Prevent database truncation if the environment is production
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 
-# Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
+Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
 
 require 'rspec/rails'
 
@@ -75,4 +75,6 @@ RSpec.configure do |config|
   # Devise
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Devise::Test::ControllerHelpers, type: :view
+  # Тестирование веб-ответа
+  config.include ApiHelper, type: :api
 end

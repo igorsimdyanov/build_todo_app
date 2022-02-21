@@ -6,21 +6,21 @@ describe Events, type: :api do
     create(:event, done: true)
   end
 
-  let(:event_json) {
-    include(
-      'id' => a_value > 0,
-      'name' => be_an(String),
-      'content' => be_an(String),
-      'done' => eq(true) | eq(false),
-      'user' => hash_including(
-        'id' => a_value > 0,
-        'name' => a_kind_of(String),
-        'role' => a_kind_of(String)
-      )
-    )    
-  }
-
   describe 'GET /api/events' do
+    let(:event_json) {
+      include(
+        'id' => a_value > 0,
+        'name' => be_an(String),
+        'content' => be_an(String),
+        'done' => eq(true) | eq(false),
+        'user' => hash_including(
+          'id' => a_value > 0,
+          'name' => a_kind_of(String),
+          'role' => a_kind_of(String)
+        )
+      )
+    }
+
     it 'успешно отвечает' do
       get '/api/events'
       expect(last_response.status).to eq(200)
@@ -39,6 +39,23 @@ describe Events, type: :api do
     it 'отдает правильную структуру' do
       get '/api/events'
       expect(json_dig('events')).to include(event_json)
+    end
+  end
+
+  describe 'GET /api/events/:id' do
+    let(:event) { create(:event) }
+    let(:event_json) {
+      include(
+        'id' => a_value > 0,
+        'name' => be_an(String),
+        'content' => be_an(String),
+        'done' => eq(true) | eq(false),
+        'finished_at' => a_value
+      )
+    }
+    it '/api/events/:id' do
+      get "/api/events/#{event.id}"
+      expect(last_response.status).to eq(200)
     end
   end
 end

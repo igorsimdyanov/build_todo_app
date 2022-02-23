@@ -73,8 +73,9 @@ RSpec.configure do |config|
   config.include(Shoulda::Matchers::ActiveModel, type: :model)
   config.include(Shoulda::Matchers::ActiveRecord, type: :model)
   # Devise
-  config.include Devise::Test::ControllerHelpers, type: :controller
-  config.include Devise::Test::ControllerHelpers, type: :view
+  %i[controller view helper].each do |subsystem|
+    config.include Devise::Test::ControllerHelpers, type: subsystem
+  end
   # Тестирование веб-ответа
   config.include ApiHelper, type: :api
 end

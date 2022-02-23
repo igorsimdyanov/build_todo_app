@@ -27,7 +27,7 @@ RSpec.describe ApplicationHelper, type: :helper do
   end
 
   context :current_user_avatar? do
-    context 'когда пользвоатель не авторизован' do
+    context 'когда пользователь не авторизован' do
       it 'возвращает ложь' do
         expect(helper.current_user_avatar?).to be_falsey
       end
@@ -42,13 +42,13 @@ RSpec.describe ApplicationHelper, type: :helper do
       end
     end
 
-    # context 'когда пользователь авторизован и с аватаркой' do
-    #   let(:user) { create(:user_with_avatar) }
-    #   before { sign_in(user) }
+    context 'когда пользователь авторизован и с аватаркой' do
+      let(:user) { create(:user_with_avatar) }
+      before { sign_in(user) }
 
-    #   it 'возвращается истина' do
-    #     expect(helper.current_user_avatar?).to be_true
-    #   end
-    # end
+      it 'возвращается истина' do
+        expect(helper.current_user_avatar?).to be_truthy
+      end
+    end
   end
 end

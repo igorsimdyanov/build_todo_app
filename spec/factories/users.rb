@@ -54,4 +54,8 @@ FactoryBot.define do
       user.avatar.attach(io: file, filename: 'ruby.png', content_type: 'image/png')
     end
   end
+
+  factory :admin_user, parent: :user do
+    role { build(:role, name: :admin, code: :admin) }
+  end
 end

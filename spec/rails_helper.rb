@@ -83,6 +83,8 @@ RSpec.configure do |config|
   %i[controller view helper].each do |subsystem|
     config.include Devise::Test::ControllerHelpers, type: subsystem
   end
+  # Использвоание path-хэлперов в тестах
+  config.include Rails.application.routes.url_helpers
   # Тестирование веб-ответа
   config.include ApiHelper, type: :api
 end

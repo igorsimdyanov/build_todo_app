@@ -9,6 +9,7 @@ RSpec.describe 'Вход в систему', driver: :selenium_chrome, js: true 
       fill_in 'user_email', with: admin_user.email
       fill_in 'user_password', with: admin_user.password
       click_button 'commit'
+      screenshot_and_save_page
       expect(current_path).to eq admin_dashboard_path
       expect(page).to have_content('Панель управления')
     end

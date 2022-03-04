@@ -15,9 +15,7 @@ module ApplicationHelper
 
   def locale
     lang = session.fetch(:locale, I18n.default_locale.to_s)
-    unless I18n.available_locales.map(&:to_s).include? lang
-      lang = I18n.default_locale.to_s
-    end
+    lang = I18n.default_locale.to_s unless I18n.available_locales.map(&:to_s).include? lang
     lang
   end
 end

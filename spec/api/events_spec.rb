@@ -7,7 +7,7 @@ describe Events, type: :api do
   end
 
   describe 'GET /api/events' do
-    let(:event_json) {
+    let(:event_json) do
       include(
         'id' => a_value > 0,
         'name' => be_an(String),
@@ -19,7 +19,7 @@ describe Events, type: :api do
           'role' => a_kind_of(String)
         )
       )
-    }
+    end
 
     it 'успешно отвечает' do
       get '/api/events'
@@ -44,7 +44,7 @@ describe Events, type: :api do
 
   describe 'GET /api/events/:id' do
     let(:event) { create(:event) }
-    let(:event_json) {
+    let(:event_json) do
       include(
         'id' => a_value > 0,
         'name' => be_an(String),
@@ -52,7 +52,8 @@ describe Events, type: :api do
         'done' => eq(true) | eq(false),
         'finished_at' => a_value
       )
-    }
+    end
+
     it '/api/events/:id' do
       get "/api/events/#{event.id}"
       expect(last_response.status).to eq(200)

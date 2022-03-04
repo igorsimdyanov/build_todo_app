@@ -1,4 +1,3 @@
-
 module Rolable
   extend ActiveSupport::Concern
 

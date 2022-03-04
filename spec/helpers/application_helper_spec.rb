@@ -35,6 +35,7 @@ RSpec.describe ApplicationHelper, type: :helper do
 
     context 'когда пользователь авторизован и без аватарки' do
       let(:user) { create(:user) }
+
       before { sign_in(user) }
 
       it 'возвращается ложь' do
@@ -44,6 +45,7 @@ RSpec.describe ApplicationHelper, type: :helper do
 
     context 'когда пользователь авторизован и с аватаркой' do
       let(:user) { create(:user_with_avatar) }
+
       before { sign_in(user) }
 
       it 'возвращается истина' do

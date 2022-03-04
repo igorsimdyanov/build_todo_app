@@ -61,8 +61,8 @@ group :development, :test do
   gem 'simplecov', require: false
 
   gem 'capybara'
-  gem 'selenium-webdriver'
   gem 'capybara-screenshot'
+  gem 'selenium-webdriver'
 end
 
 group :development do

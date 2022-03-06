@@ -25,10 +25,20 @@ RSpec.describe Admin::EventsController, driver: :selenium_chrome, js: true do
   context 'детальная страница' do
     let(:event) { create(:event, name: 'Тестовое событие') }
 
-    it 'детальная страница' do
+    it 'успешный переход' do
       visit admin_event_path(event)
       expect(page).to have_current_path admin_event_path(event), ignore_query: true
       expect(page).to have_content('Тестовое событие')
     end
   end
+
+  # context 'создание записи' do
+  #   let(:event) { attributes_for(:event) }
+
+  #   it 'успешно открывается форма создания' do
+  #     visit new_admin_event_path
+  #     expect(page).to have_current_path admin_event_path(event), ignore_query: true
+  #     expect(page).to have_content('Тестовое событие')
+  #   end
+  # end
 end

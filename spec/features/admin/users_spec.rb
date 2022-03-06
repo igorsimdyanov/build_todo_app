@@ -61,7 +61,20 @@ RSpec.describe Admin::UsersController, driver: :selenium_chrome, js: true do
       click_button 'button'
 
       expect(page).to have_content('test@test.ru')
-      expect(current_path).to match /\/admin\/users\/\d+/
+      expect(page).to have_current_path admin_user_path(default_user), ignore_query: true
+    end
+  end
+
+  context 'удаление записи' do
+    it 'успешно отрабатывает' do
+      delete_user = create(:user, email: 'test_user@example.com')
+      visit admin_users_path
+      page.accept_confirm do
+        find(".delete_link[href='/admin/users/#{delete_user.id}']").click
+      end
+
+      expect(page).not_to have_content('test_user@example.com')
+      expect { delete_user.reload }.to raise_error ActiveRecord::RecordNotFound
     end
   end
 end

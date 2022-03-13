@@ -2,7 +2,7 @@
 
 module Services
   module Users
-    module MaxEvents
+    class MaxEvents
       class Name
         attr_accessor :max_count
 
